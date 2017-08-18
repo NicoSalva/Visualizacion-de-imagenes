@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Template</title>
+	</head>
+		<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
+	</body>
+	<script>
+
+	var ctx = document.getElementById("canvas").getContext("2d");
+
+	var imageData;
+
+	var image1=new Image();
+	image1.src = "images.jpg";
+
+	image1.onload = function(){
+		ctx.drawImage(this,0,0);
+
+		//imageData= ctx.getImageData(0,0,this.width, this.height);
+
+		var imageData2 = ctx.getImageData(0,0,100, 100);
+
+
+		ctx.putImageData(imageData2,30,30);
+
+
+	}
+
+
+
+
+		   <!-- JavaScript code -->
+	</script>
+</html>
