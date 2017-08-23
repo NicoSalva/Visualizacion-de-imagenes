@@ -1,0 +1,28 @@
+body{
+  background-color: black;
+}
+#header{
+  background-color: green;
+  height: 30%;
+}
+
+.header{
+  font-size: 25px;
+  text-align: center;
+}
+
+
+#centro{
+  background-image: url("images/fondoPage.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  
+
+
+  height: 500px;
+}
+
+#footer{
+  background-color: blue;
+  height: 30%;
+}
