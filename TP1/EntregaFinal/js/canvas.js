@@ -1,5 +1,3 @@
-
-
 var ctx = document.getElementById("canvas").getContext("2d");
 
 var imageData;
@@ -8,44 +6,75 @@ var image1=new Image();
 image1.src = "images.jpg";
 
 image1.onload = function(){
-	ctx.drawImage(this,0,0);
+  ctx.drawImage(this,0,0);
 
-	imageData= ctx.getImageData(0,0,this.width, this.height);
+  imageData= ctx.getImageData(0,0,this.width, this.height);
 
 
-	for (x = 0; x < this.width; x++) {
-		for (y = 0; y <this.height; y++){
-			var r= getRed(imageData,x,y);
-			var g= getGreen(imageData,x,y);
-			var b= getBlue(imageData,x,y);
+  for (x = 0; x < this.width; x++) {
+    for (y = 0; y <this.height; y++){
+      var r= getRed(imageData,x,y);
+      var g= getGreen(imageData,x,y);
+      var b= getBlue(imageData,x,y);
 
-			setPixel(imageData,x,y,220-r,220-g,220-b,255 );
-		}
-	}
+      //setPixel(imageData,x,y,220-r,220-g,220-b,255 );//invertir colores
+      //setPixel(imageData,x,y,(r+g+b)/3,(r+g+b)/3,(r+g+b)/3,255 );//blanco y negro
+      //
 
-	ctx.putImageData(imageData,0,0);
+      //-..........................---------
+      //var nr = r*.393 + g*.769 + b*.189;//nuevo rojo
+//var ng =r*.349 + g*.686 +b*.168;//nuevo verde
+//var nb = r*.272 + g*.534 + b*.131;//nuevo azul
 
+//setPixel(imageData,x,y,nr,ng,nb,255 );//seteo pixel sepia
+//---------------------------------------------------
+
+function getPixelBinario(x){
+if (x>=127){
+  return 255;
 }
-function getRed(imageData,x,y){
-	indice= (x + y * imageData.width) *4;
-	return imageData.data[indice];
+  else {
+    return 0;
 }
-function getGreen(imageData,x,y){
-	indice= (x + y * imageData.width) *4;
-	return imageData.data[indice+1];
-}
-function getBlue(imageData,x,y){
-	indice= (x + y * imageData.width) *4;
-	return imageData.data[indice+2];
-}
-
-function setPixel(imageData,x,y,r,g,b,a)
-{
-	index= (x+y * imageData.width)*4;
-	imageData.data[index+0]=r;
-	imageData.data[index+1]=g;
-	imageData.data[index+2]=b;
-	imageData.data[index+3]=a;
 }
 
-<!-- JavaScript code -->
+var nr=getPixelBinario((r+g+b)/3);
+
+
+
+setPixel(imageData,x,y,nr,nr,nr,255 );
+
+    }
+
+
+  }
+
+  ctx.putImageData(imageData,0,0);
+
+}
+
+
+  function getRed(imageData,x,y){
+    indice= (x + y * imageData.width) *4;
+    return imageData.data[indice];
+  }
+
+  function getGreen(imageData,x,y){
+    indice= (x + y * imageData.width) *4;
+    return imageData.data[indice+1];
+  }
+  function getBlue(imageData,x,y){
+    indice= (x + y * imageData.width) *4;
+    return imageData.data[indice+2];
+  }
+
+  function setPixel(imageData,x,y,r,g,b,a)
+  {
+    index= (x+y * imageData.width)*4;
+    imageData.data[index+0]=r;
+    imageData.data[index+1]=g;
+    imageData.data[index+2]=b;
+    imageData.data[index+3]=a;
+}
+
+     <!-- JavaScript code -->
