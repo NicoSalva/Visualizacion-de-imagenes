@@ -27,8 +27,36 @@
 				var g= getGreen(imageData,x,y);
 				var b= getBlue(imageData,x,y);
 
-				setPixel(imageData,x,y,220-r,220-g,220-b,255 );
+				//setPixel(imageData,x,y,220-r,220-g,220-b,255 );//invertir colores
+				//setPixel(imageData,x,y,(r+g+b)/3,(r+g+b)/3,(r+g+b)/3,255 );//blanco y negro
+				//
+
+				//-..........................---------
+				//var nr = r*.393 + g*.769 + b*.189;//nuevo rojo
+//var ng =r*.349 + g*.686 +b*.168;//nuevo verde
+//var nb = r*.272 + g*.534 + b*.131;//nuevo azul
+
+//setPixel(imageData,x,y,nr,ng,nb,255 );//seteo pixel sepia
+//---------------------------------------------------
+
+function getPixelBinario(x){
+	if (x>=127){
+		return 255;
+	}
+		else {
+			return 0;
+	}
+}
+
+var nr=getPixelBinario((r+g+b)/3);
+
+
+
+setPixel(imageData,x,y,nr,nr,nr,255 );
+
 			}
+
+
 		}
 
 		ctx.putImageData(imageData,0,0);

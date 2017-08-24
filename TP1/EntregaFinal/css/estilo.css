@@ -1,8 +1,16 @@
 body{
-  background-color: black;
+  background-color:brown;
+}
+
+h1{
+  color: white;
+}
+h3{
+  color: white;
+  font-size: 70px;
 }
 #header{
-  background-color: green;
+  background-color: grey;
   height: 30%;
 }
 
@@ -11,13 +19,17 @@ body{
   text-align: center;
 }
 
+#cargadorAjax{
+  background-color: green;
+  height: 500px;
+  text-align: center;
+}
+
 
 #centro{
-  background-image: url("images/fondoPage.jpg");
+  background-color: pink;
   background-repeat: no-repeat;
   background-position: center;
-  
-
 
   height: 500px;
 }
